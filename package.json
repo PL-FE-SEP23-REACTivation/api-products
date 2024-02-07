@@ -18,7 +18,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "start": "npm run build && node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "lint": "eslint . --ignore-path .gitignore",
+    "format-lint": "npm run lint && npm run format -- --fix",
+    "prepare": "husky"
   },
   "devDependencies": {
     "nodemon": "^3.0.3",
