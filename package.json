@@ -31,6 +31,11 @@
     "prepare": "husky",
     "db-migrate": "sequelize-cli db:migrate"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.ts": [
       "npm run lint"
