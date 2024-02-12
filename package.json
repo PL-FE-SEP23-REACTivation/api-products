@@ -39,6 +39,14 @@
       "npm run format-lint"
     ]
   },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint"
+    ],
+    "*.tsx": [
+      "npm run format-lint"
+    ]
+  },
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@typescript-eslint/eslint-plugin": "^5.9.0",

@@ -1,11 +1,13 @@
-import dotenv from 'dotenv';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import express, { Express } from 'express';
 import routes from './routes/routes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { connect } from './utils/db.js';
 
 dotenv.config();
+connect();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
