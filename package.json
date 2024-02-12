@@ -23,12 +23,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
-    "start": "npm run build && node dist/index.js",
+    "start": "npx tsx src/index.ts",
     "dev": "nodemon src/index.ts",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint . --ignore-path .gitignore",
     "format-lint": "npm run lint && npm run format -- --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "db-migrate": "sequelize-cli db:migrate"
   },
   "lint-staged": {
     "*.ts": [
