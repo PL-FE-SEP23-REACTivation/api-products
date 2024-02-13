@@ -14,9 +14,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "offsetTernaryExpressions": true }],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],

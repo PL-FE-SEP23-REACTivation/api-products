@@ -18,17 +18,17 @@ const {
 const settings: SequelizeOptions =
   process.env.NODE_ENV === 'production'
     ? {
-      database: DB_NAME,
-      username: DB_USER,
-      password: DB_PASSWORD,
-      host: DB_HOST,
-    }
+        database: DB_NAME,
+        username: DB_USER,
+        password: DB_PASSWORD,
+        host: DB_HOST,
+      }
     : {
-      database: DEV_DB_NAME,
-      username: DEV_DB_USER,
-      password: DEV_DB_PASSWORD,
-      host: DEV_DB_HOST,
-    };
+        database: DEV_DB_NAME,
+        username: DEV_DB_USER,
+        password: DEV_DB_PASSWORD,
+        host: DEV_DB_HOST,
+      };
 
 export const sequelize = new Sequelize(
   settings.database!,
