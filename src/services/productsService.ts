@@ -17,7 +17,7 @@ export const getRecomendedProducts = async () => {
   const numb: number[] = await generateRandomNumbersArray(allproducts.length);
   const result: Product[] = [];
 
-  await numb.forEach(async el => {
+  await numb.forEach(async (el) => {
     result.push(allproducts.find((p: Product) => p.id === el));
   });
 
@@ -40,5 +40,4 @@ const generateRandomNumbersArray = (max: number) => {
   }
 
   return result;
-
 };
