@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import Product from '../../models/product';
 
 const read = async () => {
   const fileLocation = path.resolve('public/api', 'products.json');
@@ -13,6 +14,6 @@ export const getAll = async () => {
 
 export const getProductById = async (id: string) => {
   const products = await read();
-  const result = products.find((prod: any) => prod.itemId === id);
+  const result = products.find((prod: Product) => prod.itemId === id);
   return result;
 };

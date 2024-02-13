@@ -26,7 +26,6 @@ export const getOne = async (req: Request, res: Response) => {
     const product = await service.getProductById(id);
 
     if (product === undefined || product.length === 0) {
-      console.log('brak takiego typa');
       res.sendStatus(404);
 
       return;
@@ -34,7 +33,6 @@ export const getOne = async (req: Request, res: Response) => {
 
     res.send(product);
   } catch (e) {
-    console.log('wyłapało error');
     res.sendStatus(404);
   }
 };
