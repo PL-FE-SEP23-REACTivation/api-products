@@ -13,7 +13,6 @@ export const getAll = async () => {
 
 export const getProductById = async (id: string) => {
   const products = await read();
-  const result = products.find((prod: any) => prod.id === +id);
-  // console.log(typeof id, id);
+  const result = products.find((prod: any) => prod.itemId === id);
   return result;
 };
