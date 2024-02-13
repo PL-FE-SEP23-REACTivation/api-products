@@ -29,7 +29,8 @@
     "lint": "eslint . --ignore-path .gitignore",
     "format-lint": "npm run lint && npm run format -- --fix",
     "prepare": "husky",
-    "db-migrate": "sequelize-cli db:migrate"
+    "db-migrate": "sequelize-cli db:migrate",
+    "db-migration-undo": "sequelize-cli db:migrate:undo:all"
   },
   "husky": {
     "hooks": {
