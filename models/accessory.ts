@@ -28,8 +28,10 @@ interface AccessoryAttributes {
   cell: string[];
 }
 
-// eslint-disable-next-line max-len
-class Accesory extends Model<AccessoryAttributes> implements AccessoryAttributes {
+class Accesory
+  extends Model<AccessoryAttributes>
+  implements AccessoryAttributes
+{
   declare createdAt: string;
   declare updatedAt: string;
   declare id: string;
