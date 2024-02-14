@@ -1,6 +1,9 @@
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
+import Phone from './phone';
+import Accessory from './accessory';
+import Tablet from './tablet';
 
 interface ProductAttributes {
   id: number;
@@ -61,7 +64,7 @@ Product.init(
     },
     price: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     screen: {
       allowNull: false,
@@ -90,13 +93,19 @@ Product.init(
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
   },
   { sequelize, modelName: 'Product' }
 );
+
+Product.hasOne(Phone, { foreignKey: 'id', as: 'phone' });
+Product.hasOne(Accessory, { foreignKey: 'id', as: 'accessory' });
+Product.hasOne(Tablet, { foreignKey: 'id', as: 'tablet' });
 
 export default Product;

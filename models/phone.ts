@@ -1,10 +1,12 @@
+/* eslint-disable max-len */
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
+import Product from './product';
 
 type Descriptions = {
   title: string;
-  text: string;
+  text: string[];
 };
 
 interface PhoneAttributes {
@@ -17,7 +19,7 @@ interface PhoneAttributes {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorAvailable: string[];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: Descriptions[];
@@ -40,7 +42,7 @@ class Phone extends Model<PhoneAttributes> implements PhoneAttributes {
   declare capacity: string;
   declare priceRegular: number;
   declare priceDiscount: number;
-  declare colorAvailable: string[];
+  declare colorsAvailable: string[];
   declare color: string;
   declare images: string[];
   declare description: Descriptions[];
@@ -63,10 +65,12 @@ Phone.init(
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     namespaceId: {
       allowNull: false,
@@ -92,7 +96,7 @@ Phone.init(
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    colorAvailable: {
+    colorsAvailable: {
       allowNull: false,
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
@@ -106,7 +110,7 @@ Phone.init(
     },
     description: {
       allowNull: false,
-      type: DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.ARRAY(DataTypes.JSONB),
     },
     screen: {
       allowNull: false,
@@ -139,5 +143,7 @@ Phone.init(
   },
   { sequelize, modelName: 'Phone' }
 );
+
+Phone.belongsTo(Product, { foreignKey: 'id', targetKey: 'itemId', as: 'phone' });
 
 export default Phone;

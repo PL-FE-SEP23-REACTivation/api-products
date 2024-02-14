@@ -1,5 +1,6 @@
 'use strict';
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Products', {
@@ -15,6 +16,7 @@ module.exports = {
       itemId: {
         allowNull: false,
         type: Sequelize.STRING,
+        unique: true,
       },
       name: {
         allowNull: false,
@@ -55,10 +57,12 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()')
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()')
       },
     });
   },
