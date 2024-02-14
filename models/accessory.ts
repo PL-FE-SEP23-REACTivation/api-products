@@ -135,6 +135,10 @@ Accesory.init(
   { sequelize, modelName: 'Accesory' }
 );
 
-Accesory.belongsTo(Product, { foreignKey: 'id', targetKey: 'itemId', as: 'accessory' });
+Accesory.belongsTo(Product, {
+  foreignKey: 'id',
+  targetKey: 'itemId',
+  as: 'accessory',
+});
 
 export default Accesory;
