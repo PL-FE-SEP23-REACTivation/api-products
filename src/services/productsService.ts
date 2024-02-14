@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import Product from '../../models/product';
+import { ProductType } from '../types/productsType';
 
 const read = async () => {
   const fileLocation = path.resolve('public/api', 'products.json');
@@ -19,10 +19,10 @@ export const getAll = async () => {
 export const getRecomendedProducts = async () => {
   const allproducts = await getAll();
   const numb: number[] = await generateRandomNumbersArray(allproducts.length);
-  const result: Product[] = [];
+  const result: ProductType[] = [];
 
   await numb.forEach(async (el) => {
-    result.push(allproducts.find((p: Product) => p.id === el));
+    result.push(allproducts.find((p: ProductType) => p.id === el));
   });
 
   return result;

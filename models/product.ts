@@ -96,7 +96,7 @@ Product.init(
       type: DataTypes.DATE,
     },
   },
-  { sequelize, modelName: 'products' }
+  { sequelize, modelName: 'product' }
 );
 
 export default Product;
