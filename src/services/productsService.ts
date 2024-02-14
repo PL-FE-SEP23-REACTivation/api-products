@@ -9,7 +9,11 @@ const read = async () => {
 };
 
 export const getAll = async () => {
+  //get from file
   return read();
+
+  //get from database
+  // return Product.findAll();
 };
 
 export const getRecomendedProducts = async () => {
@@ -31,7 +35,7 @@ const generateRandomNumbersArray = (max: number) => {
     return result;
   }
 
-  while (result.length < 10) {
+  while (result.length < 12) {
     const randomNumber = Math.floor(Math.random() * (max - 1 + 1)) + 1;
 
     if (result.indexOf(randomNumber) === -1) {
