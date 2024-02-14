@@ -14,7 +14,7 @@ export const getAll = async () => {
 
 export const getPhoneById = async (id: string) => {
   const phones = await read();
-  const result = phones.find((phone: PhoneType ) => phone.id === id);
+  const result = phones.find((phone: PhoneType) => phone.id === id);
 
   return result;
 };

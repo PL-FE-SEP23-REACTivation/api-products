@@ -7,9 +7,9 @@ const router = express.Router();
 router.get('/products', controller.getAll);
 router.get('/phones/:id', phonesController.getPhoneById);
 router.get('/phones', phonesController.getAll);
-router.get('/tablets/:id', );
-router.get('/tablets', );
-router.get('/accessories/:id', );
-router.get('/accessories', );
+router.get('/tablets/:id');
+router.get('/tablets');
+router.get('/accessories/:id');
+router.get('/accessories');
 
 export default router;
