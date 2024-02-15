@@ -105,8 +105,4 @@ Product.init(
   { sequelize, modelName: 'Product' }
 );
 
-Product.belongsTo(Phone, { foreignKey: 'itemId', as: 'phone' });
-Product.belongsTo(Tablet, { foreignKey: 'itemId', as: 'tablet' });
-Product.belongsTo(Accessory, { foreignKey: 'itemId', as: 'accessory' });
-
 export default Product;

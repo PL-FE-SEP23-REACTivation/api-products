@@ -2,6 +2,7 @@
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
+import Product from './product';
 
 type Descriptions = {
   title: string;
@@ -142,5 +143,8 @@ Phone.init(
   },
   { sequelize, modelName: 'Phone' }
 );
+
+Phone.hasOne(Product, { foreignKey: 'itemId', as: 'product'});
+Product.belongsTo(Phone, { foreignKey: 'id', as: 'phone' });
 
 export default Phone;
