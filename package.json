@@ -29,7 +29,7 @@
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint . --ignore-path .gitignore",
     "format-lint": "npm run lint && npm run format -- --fix",
-    "prepare": "husky",
+    "prepare": "husky install",
     "db-migrate": "sequelize-cli db:migrate",
     "db-migration-undo": "sequelize-cli db:migrate:undo:all",
     "make-seed": "npx sequelize-cli seed:generate --name demo-user",
