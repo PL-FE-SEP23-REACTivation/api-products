@@ -61,7 +61,7 @@ Tablet.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     createdAt: {
       allowNull: false,
@@ -144,11 +144,5 @@ Tablet.init(
   },
   { sequelize, modelName: 'Tablet' }
 );
-
-Tablet.belongsTo(Product, {
-  foreignKey: 'id',
-  targetKey: 'itemId',
-  as: 'tablet',
-});
 
 export default Tablet;

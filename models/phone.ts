@@ -60,7 +60,7 @@ Phone.init(
     id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     createdAt: {
       allowNull: false,
@@ -143,11 +143,5 @@ Phone.init(
   },
   { sequelize, modelName: 'Phone' }
 );
-
-Phone.belongsTo(Product, {
-  foreignKey: 'id',
-  targetKey: 'itemId',
-  as: 'phone',
-});
 
 export default Phone;

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
@@ -104,8 +105,8 @@ Product.init(
   { sequelize, modelName: 'Product' }
 );
 
-Product.hasOne(Phone, { foreignKey: 'id', as: 'phone' });
-Product.hasOne(Accessory, { foreignKey: 'id', as: 'accessory' });
-Product.hasOne(Tablet, { foreignKey: 'id', as: 'tablet' });
+Product.belongsTo(Phone, { foreignKey: 'itemId', as: 'phone' });
+Product.belongsTo(Tablet, { foreignKey: 'itemId', as: 'tablet' });
+Product.belongsTo(Accessory, { foreignKey: 'itemId', as: 'accessory' });
 
 export default Product;

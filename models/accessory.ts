@@ -59,7 +59,7 @@ Accesory.init(
     id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     createdAt: {
       allowNull: false,
@@ -134,11 +134,5 @@ Accesory.init(
   },
   { sequelize, modelName: 'Accesory' }
 );
-
-Accesory.belongsTo(Product, {
-  foreignKey: 'id',
-  targetKey: 'itemId',
-  as: 'accessory',
-});
 
 export default Accesory;
