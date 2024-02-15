@@ -30,7 +30,7 @@ interface AccessoryAttributes {
   cell: string[];
 }
 
-class Accesory
+class Accessory
   extends Model<AccessoryAttributes>
   implements AccessoryAttributes
 {
@@ -54,7 +54,7 @@ class Accesory
   declare cell: string[];
 }
 
-Accesory.init(
+Accessory.init(
   {
     id: {
       allowNull: false,
@@ -132,10 +132,11 @@ Accesory.init(
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
   },
-  { sequelize, modelName: 'Accesory' }
+  { sequelize, modelName: 'Accessory' }
 );
 
-Accesory.hasOne(Product, { foreignKey: 'id', as: 'product' });
-Product.belongsTo(Accesory, { foreignKey: 'itemId', as: 'phone' });
+Accessory.hasOne(Product, { foreignKey: 'id', as: 'product' });
+Product.belongsTo(Accessory, { foreignKey: 'itemId', as: 'accessory' });
+
 
 export default Accesory;

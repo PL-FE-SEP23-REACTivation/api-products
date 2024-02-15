@@ -146,6 +146,6 @@ Tablet.init(
 );
 
 Tablet.hasOne(Product, { foreignKey: 'id', as: 'product' });
-Product.belongsTo(Tablet, { foreignKey: 'itemId', as: 'phone' });
+Product.belongsTo(Tablet, { foreignKey: 'itemId', as: 'tablet' });
 
 export default Tablet;
