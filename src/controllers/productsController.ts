@@ -12,3 +12,33 @@ export const getAll = async (req: Request, res: Response) => {
 
   res.send(paginatedProducts);
 };
+
+
+export const getRecomended = async (req: Request, res: Response) => {
+  const result = await service.getRecomendedProducts();
+
+  res.send(result);
+
+export const getOne = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  if (id === undefined) {
+    res.sendStatus(404);
+
+    return;
+  }
+
+  try {
+    const product = await service.getProductById(id);
+
+    if (product === undefined || product.length === 0) {
+      res.sendStatus(404);
+
+      return;
+    }
+
+    res.send(product);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};
