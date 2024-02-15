@@ -12,3 +12,27 @@ export const getAll = async (req: Request, res: Response) => {
 
   res.send(paginatedProducts);
 };
+
+export const getTabletById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  if (id === undefined) {
+    res.sendStatus(404);
+
+    return;
+  }
+
+  try {
+    const product = await service.getTablet(id);
+
+    if (product === undefined) {
+      res.sendStatus(404);
+
+      return;
+    }
+
+    res.send(product);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};

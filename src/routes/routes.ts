@@ -10,8 +10,14 @@ const router = express.Router();
 router.get('/products', productController.getAll);
 router.get('/products/:id', productController.getOne);
 router.get('/products/:id/recommended', productController.getRecomended);
+
+router.get('/phones/:id', phonesController.getPhoneById);
 router.get('/phones', phonesController.getAll);
+
+router.get('/tablets/:id', tabletsController.getTabletById);
 router.get('/tablets', tabletsController.getAll);
+
+router.get('/accessories/:id', accessoriesController.getAccessorieById);
 router.get('/accessories', accessoriesController.getAll);
 
 export default router;
