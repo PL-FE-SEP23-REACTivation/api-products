@@ -5,9 +5,7 @@ export const getAll = async () => {
 };
 
 export const getProductById = async (id: string) => {
-  const products = await getAll();
-  const result = products.find((prod: Product) => prod.itemId === id);
-  return result;
+  return await Product.findByPk(id);
 };
 
 export const getRecomendedProducts = async () => {
