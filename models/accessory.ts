@@ -1,10 +1,12 @@
+/* eslint-disable max-len */
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
+import Product from './product';
 
 type Descriptions = {
   title: string;
-  text: string;
+  text: string[];
 };
 
 interface AccessoryAttributes {
@@ -17,7 +19,7 @@ interface AccessoryAttributes {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorAvailable: string[];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: Descriptions[];
@@ -41,7 +43,7 @@ class Accesory
   declare capacity: string;
   declare priceRegular: number;
   declare priceDiscount: number;
-  declare colorAvailable: string[];
+  declare colorsAvailable: string[];
   declare color: string;
   declare images: string[];
   declare description: Descriptions[];
@@ -57,15 +59,17 @@ Accesory.init(
     id: {
       allowNull: false,
       primaryKey: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     namespaceId: {
       allowNull: false,
@@ -91,7 +95,7 @@ Accesory.init(
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    colorAvailable: {
+    colorsAvailable: {
       allowNull: false,
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
@@ -105,7 +109,7 @@ Accesory.init(
     },
     description: {
       allowNull: false,
-      type: DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.JSONB,
     },
     screen: {
       allowNull: false,
@@ -130,5 +134,8 @@ Accesory.init(
   },
   { sequelize, modelName: 'Accesory' }
 );
+
+Accesory.hasOne(Product, { foreignKey: 'id', as: 'product' });
+Product.belongsTo(Accesory, { foreignKey: 'itemId', as: 'phone' });
 
 export default Accesory;

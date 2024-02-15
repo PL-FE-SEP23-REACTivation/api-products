@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
@@ -61,7 +62,7 @@ Product.init(
     },
     price: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     screen: {
       allowNull: false,
@@ -90,10 +91,12 @@ Product.init(
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
   },
   { sequelize, modelName: 'Product' }

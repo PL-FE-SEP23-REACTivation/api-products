@@ -1,10 +1,12 @@
+/* eslint-disable max-len */
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
+import Product from './product';
 
 type Descriptions = {
   title: string;
-  text: string;
+  text: string[];
 };
 
 interface TabletAttributes {
@@ -17,7 +19,7 @@ interface TabletAttributes {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorAvailable: string[];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: Descriptions[];
@@ -40,7 +42,7 @@ class Tablet extends Model<TabletAttributes> implements TabletAttributes {
   declare capacity: string;
   declare priceRegular: number;
   declare priceDiscount: number;
-  declare colorAvailable: string[];
+  declare colorsAvailable: string[];
   declare color: string;
   declare images: string[];
   declare description: Descriptions[];
@@ -59,15 +61,17 @@ Tablet.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     updatedAt: {
       allowNull: false,
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW(),
     },
     namespaceId: {
       allowNull: false,
@@ -93,7 +97,7 @@ Tablet.init(
       allowNull: false,
       type: DataTypes.INTEGER,
     },
-    colorAvailable: {
+    colorsAvailable: {
       allowNull: false,
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
@@ -107,7 +111,7 @@ Tablet.init(
     },
     description: {
       allowNull: false,
-      type: DataTypes.ARRAY(DataTypes.JSON),
+      type: DataTypes.ARRAY(DataTypes.JSONB),
     },
     screen: {
       allowNull: false,
@@ -140,5 +144,8 @@ Tablet.init(
   },
   { sequelize, modelName: 'Tablet' }
 );
+
+Tablet.hasOne(Product, { foreignKey: 'id', as: 'product' });
+Product.belongsTo(Tablet, { foreignKey: 'itemId', as: 'phone' });
 
 export default Tablet;
