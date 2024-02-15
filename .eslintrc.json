@@ -14,15 +14,16 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "react"],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "rules": {
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "offsetTernaryExpressions": true }],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "max-len": ["error", { "code": 80 }],
     "no-trailing-spaces": "error",
     "no-multi-spaces": "error",
-    "no-multiple-empty-lines": ["error", { "max": 1 }]
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "@typescript-eslint/no-var-requires": 0
   }
 }
