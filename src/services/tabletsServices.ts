@@ -18,3 +18,14 @@ export const getTablet = async (id: string) => {
 
   return result;
 };
+
+// -------get from database-------
+// import Tablet from '../../models/tablet';
+
+// export const getAll = async () => {
+//   return await Tablet.findAll();
+// };
+
+// export const getAccessorie = async (id: string) => {
+//   return await Tablet.findByPk(id);
+// };

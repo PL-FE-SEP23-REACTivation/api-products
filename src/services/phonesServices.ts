@@ -18,3 +18,14 @@ export const getPhoneById = async (id: string) => {
 
   return result;
 };
+
+// -------get from database-------
+// import Phone from '../../models/phone';
+
+// export const getAll = async () => {
+//   return await Phone.findAll();
+// };
+
+// export const getAccessorie = async (id: string) => {
+//   return await Phone.findByPk(id);
+// };
