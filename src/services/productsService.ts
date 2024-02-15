@@ -1,19 +1,20 @@
 import Product from '../../models/product';
-import fs from 'fs/promises';
-import path from 'path';
-import { ProductType } from '../types/productsType';
 
 export const getAll = async () => {
   return await Product.findAll();
+};
 
 export const getRecomendedProducts = async () => {
   const allproducts = await getAll();
   const numb: number[] = await generateRandomNumbersArray(allproducts.length);
-  const result: ProductType[] = [];
+  const result: Product[] = [];
 
-  await numb.forEach(async (el) => {
-    result.push(allproducts.find((p: ProductType) => p.id === el));
-  });
+  for (const el of numb) {
+    const foundProduct = allproducts.find((p) => p.id === el);
+    if (foundProduct) {
+      result.push(foundProduct);
+    }
+  }
 
   return result;
 };
