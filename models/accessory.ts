@@ -2,7 +2,6 @@
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
-import Product from './product';
 
 type Descriptions = {
   title: string;
@@ -30,7 +29,7 @@ interface AccessoryAttributes {
   cell: string[];
 }
 
-class Accesory
+class Accessory
   extends Model<AccessoryAttributes>
   implements AccessoryAttributes
 {
@@ -54,7 +53,7 @@ class Accesory
   declare cell: string[];
 }
 
-Accesory.init(
+Accessory.init(
   {
     id: {
       allowNull: false,
@@ -132,7 +131,7 @@ Accesory.init(
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
   },
-  { sequelize, modelName: 'Accesory' }
+  { sequelize, modelName: 'Accessory' }
 );
 
-export default Accesory;
+export default Accessory;
