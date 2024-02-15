@@ -4,6 +4,12 @@ export const getAll = async () => {
   return await Product.findAll();
 };
 
+export const getProductById = async (id: string) => {
+  const products = await getAll();
+  const result = products.find((prod: Product) => prod.itemId === id);
+  return result;
+};
+
 export const getRecomendedProducts = async () => {
   const allproducts = await getAll();
   const numb: number[] = await generateRandomNumbersArray(allproducts.length);
@@ -34,11 +40,5 @@ const generateRandomNumbersArray = (max: number) => {
     }
   }
 
-  return result;
-};
-
-export const getProductById = async (id: string) => {
-  const products = await getAll();
-  const result = products.find((prod: Product) => prod.itemId === id);
   return result;
 };
