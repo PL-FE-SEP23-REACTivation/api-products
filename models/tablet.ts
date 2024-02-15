@@ -145,7 +145,7 @@ Tablet.init(
   { sequelize, modelName: 'Tablet' }
 );
 
-Tablet.hasOne(Product, { foreignKey: 'id', as: 'product'});
+Tablet.hasOne(Product, { foreignKey: 'id', as: 'product' });
 Product.belongsTo(Tablet, { foreignKey: 'itemId', as: 'tablet' });
 
 export default Tablet;

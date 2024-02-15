@@ -2,9 +2,6 @@
 'use strict';
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../src/utils/db';
-import Phone from './phone';
-import Accessory from './accessory';
-import Tablet from './tablet';
 
 interface ProductAttributes {
   id: number;

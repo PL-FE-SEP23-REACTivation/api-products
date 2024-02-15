@@ -135,7 +135,7 @@ Accessory.init(
   { sequelize, modelName: 'Accessory' }
 );
 
-Accessory.hasOne(Product, { foreignKey: 'id', as: 'product'});
+Accessory.hasOne(Product, { foreignKey: 'id', as: 'product' });
 Product.belongsTo(Accessory, { foreignKey: 'itemId', as: 'accessory' });
 
 export default Accessory;
