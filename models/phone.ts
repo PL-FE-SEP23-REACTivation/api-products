@@ -144,7 +144,7 @@ Phone.init(
   { sequelize, modelName: 'Phone' }
 );
 
-Phone.hasOne(Product, { foreignKey: 'itemId', as: 'product' });
-Product.belongsTo(Phone, { foreignKey: 'id', as: 'phone' });
+Phone.hasOne(Product, { foreignKey: 'id', as: 'product' });
+Product.belongsTo(Phone, { foreignKey: 'itemId', as: 'phone' });
 
 export default Phone;
