@@ -8,33 +8,39 @@ export const getAll = async (req: Request, res: Response) => {
   const products = await service.getAll();
   const startIndex = (page - 1) * limit;
   const lastIndex = page * limit;
-  const paginatedProducts = products.slice(startIndex, lastIndex);
 
-  res.send(paginatedProducts);
-};
-
-export const getOne = async (req: Request, res: Response) => {
-  const { id } = req.params;
-
-  if (id === undefined) {
+  if (products === undefined) {
     res.sendStatus(404);
 
     return;
   }
 
-  try {
-    const product = await service.getProductById(id);
+  const paginatedProducts = products.slice(startIndex, lastIndex);
 
-    if (product === undefined) {
-      res.sendStatus(404);
+  res.send(paginatedProducts);
+};
 
-      return;
-    }
+export const getAllByCategory = async (req: Request, res: Response) => {
+  const page = parseInt(req.query.page as string) || 1;
+  const limit = parseInt(req.query.limit as string) || 8;
+  const { category } = req.params;
+  const startIndex = (page - 1) * limit;
+  const products = await
+  service.getProductsByCategory(category, limit, startIndex);
 
-    res.send(product);
-  } catch (e) {
+  if (category === undefined) {
     res.sendStatus(404);
+
+    return;
   }
+
+  if (products === undefined) {
+    res.sendStatus(404);
+
+    return;
+  }
+
+  res.send(products);
 };
 
 export const getRecomended = async (req: Request, res: Response) => {
