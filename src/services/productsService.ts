@@ -5,7 +5,8 @@ export const getAll = async () => {
 };
 
 export const getAllWithPagination = async (
-  limit: number, startIndex: number,
+  limit: number,
+  startIndex: number
 ) => {
   return await Product.findAll({
     limit,
