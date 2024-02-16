@@ -25,8 +25,11 @@ export const getAllByCategory = async (req: Request, res: Response) => {
   const limit = parseInt(req.query.limit as string) || 8;
   const { category } = req.params;
   const startIndex = (page - 1) * limit;
-  const products = await
-  service.getProductsByCategory(category, limit, startIndex);
+  const products = await service.getProductsByCategory(
+    category,
+    limit,
+    startIndex
+  );
 
   if (category === undefined) {
     res.sendStatus(404);

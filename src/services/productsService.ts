@@ -5,7 +5,9 @@ export const getAll = async () => {
 };
 
 export const getProductsByCategory = async (
-  category: string, limit: number, startIndex: number
+  category: string,
+  limit: number,
+  startIndex: number
 ) => {
   return await Product.findAll({
     limit,
