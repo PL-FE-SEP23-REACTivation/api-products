@@ -1,4 +1,4 @@
-import Tablet from '../../models/tablet';
+import Tablet from '../../models/tablet.js';
 
 export const getAll = async () => {
   return await Tablet.findAll();

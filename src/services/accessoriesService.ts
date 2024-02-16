@@ -1,4 +1,4 @@
-import Accessory from '../../models/accessory';
+import Accessory from '../../models/accessory.js';
 
 export const getAll = async () => {
   return await Accessory.findAll();

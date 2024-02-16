@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 'use strict';
 import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../src/utils/db';
+import { sequelize } from '../src/utils/db.js';
 
 interface ProductAttributes {
   id: number;
