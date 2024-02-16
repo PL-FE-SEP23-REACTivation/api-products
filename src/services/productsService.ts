@@ -4,6 +4,15 @@ export const getAll = async () => {
   return await Product.findAll();
 };
 
+export const getAllWithPagination = async (
+  limit: number, startIndex: number,
+) => {
+  return await Product.findAll({
+    limit,
+    offset: startIndex,
+  });
+};
+
 export const getProductsByCategory = async (
   category: string,
   limit: number,
