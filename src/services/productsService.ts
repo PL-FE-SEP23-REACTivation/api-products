@@ -17,12 +17,28 @@ export const getAllWithPagination = async (
 export const getProductsByCategory = async (
   category: string,
   limit: number,
-  startIndex: number
+  startIndex: number,
+  sortBy: string
 ) => {
+  let order: OrderItem = ['year', 'DESC'];
+  switch(sortBy) {
+  case 'oldest':
+    order = ['year', 'ASC'];
+    break;
+  case 'highest-price':
+    order = ['price', 'DESC'];
+    break;
+  case 'lowest-price':
+    order = ['price', 'ASC'];
+    break;
+  default:
+    break;
+  }
   return await Product.findAll({
     limit,
     offset: startIndex,
     where: { category },
+    order: [order]
   });
 };
 
@@ -59,7 +75,7 @@ const generateRandomNumbersArray = (max: number) => {
   return result;
 };
 
-import sequelize from 'sequelize';
+import sequelize, { OrderItem } from 'sequelize';
 
 export const getProductsWithHotPrice = async () => {
   return await Product.findAll({
