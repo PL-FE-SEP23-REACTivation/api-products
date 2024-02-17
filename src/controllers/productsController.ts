@@ -49,3 +49,23 @@ export const getRecomended = async (req: Request, res: Response) => {
     res.sendStatus(404);
   }
 };
+
+export const getHotPrice = async (req: Request, res: Response) => {
+  try {
+    const products = await service.getProductsWithHotPrice();
+
+    res.send(products);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};
+
+export const getNewestProducts = async (req: Request, res: Response) => {
+  try {
+    const products = await service.getNewProducts();
+
+    res.send(products);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};
