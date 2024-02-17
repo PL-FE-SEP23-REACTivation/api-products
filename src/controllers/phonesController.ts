@@ -3,7 +3,7 @@ import * as service from '../services/phonesService.js';
 
 export const getAll = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
-  const limit = parseInt(req.query.limit as string) || 8;
+  const limit = parseInt(req.query.perPage as string) || 8;
 
   try {
     const products = await service.getAll();
