@@ -3,7 +3,7 @@ import * as service from '../services/productsService.js';
 
 export const getAll = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
-  const limit = parseInt(req.query.limit as string) || 8;
+  const limit = parseInt(req.query.perPage as string) || 8;
   const startIndex = (page - 1) * limit;
 
   try {
@@ -17,7 +17,7 @@ export const getAll = async (req: Request, res: Response) => {
 
 export const getAllByCategory = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
-  const limit = parseInt(req.query.limit as string) || 8;
+  const limit = parseInt(req.query.perPage as string) || 8;
   const sortBy = (req.query.sortBy as string) || 'newest';
   const { category } = req.params;
   const startIndex = (page - 1) * limit;
