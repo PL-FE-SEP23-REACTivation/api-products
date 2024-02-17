@@ -29,7 +29,7 @@
     "dev": "nodemon src/index.ts",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint . --ignore-path .gitignore",
-    "format-lint": "npm run lint && npm run format -- --fix",
+    "format-lint": "npm run format && npm run lint -- --fix",
     "prepare": "husky install",
     "db-migrate": "sequelize-cli db:migrate",
     "db-migration-undo": "sequelize-cli db:migrate:undo:all",
