@@ -9,7 +9,6 @@ export const getHotPrice = async (req: Request, res: Response) => {
   } catch (e) {
     res.sendStatus(404);
   }
-
 };
 
 export const getNewestProducts = async (req: Request, res: Response) => {
