@@ -9,7 +9,7 @@ import * as homeController from '../controllers/homeController.js';
 const router = express.Router();
 
 router.get('/home/hotprice', homeController.getHotPrice);
-router.get('/home/newProducts', homeController.getNewestProducts);
+router.get('/home/newproducts', homeController.getNewestProducts);
 
 router.get('/products/:category', productController.getAllByCategory);
 router.get('/products/:id/recommended', productController.getRecomended);

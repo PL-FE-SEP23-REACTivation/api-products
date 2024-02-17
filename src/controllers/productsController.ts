@@ -5,15 +5,14 @@ export const getAll = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.limit as string) || 8;
   const startIndex = (page - 1) * limit;
-  const products = await service.getAllWithPagination(limit, startIndex);
 
-  if (products === undefined) {
+  try {
+    const products = await service.getAllWithPagination(limit, startIndex);
+
+    res.send(products);
+  } catch (e) {
     res.sendStatus(404);
-
-    return;
   }
-
-  res.send(products);
 };
 
 export const getAllByCategory = async (req: Request, res: Response) => {
@@ -21,11 +20,6 @@ export const getAllByCategory = async (req: Request, res: Response) => {
   const limit = parseInt(req.query.limit as string) || 8;
   const { category } = req.params;
   const startIndex = (page - 1) * limit;
-  const products = await service.getProductsByCategory(
-    category,
-    limit,
-    startIndex
-  );
 
   if (category === undefined) {
     res.sendStatus(404);
@@ -33,17 +27,25 @@ export const getAllByCategory = async (req: Request, res: Response) => {
     return;
   }
 
-  if (products === undefined) {
+  try {
+    const products = await service.getProductsByCategory(
+      category,
+      limit,
+      startIndex
+    );
+
+    res.send(products);
+  } catch (e) {
     res.sendStatus(404);
-
-    return;
   }
-
-  res.send(products);
 };
 
 export const getRecomended = async (req: Request, res: Response) => {
-  const result = await service.getRecomendedProducts();
+  try {
+    const result = await service.getRecomendedProducts();
 
-  res.send(result);
+    res.send(result);
+  } catch (e) {
+    res.sendStatus(404);
+  }
 };

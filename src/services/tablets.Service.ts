@@ -1,7 +1,13 @@
 import Tablet from '../../models/tablet.js';
 
-export const getAll = async () => {
-  return await Tablet.findAll();
+export const getAll = async (
+  limit: number,
+  startIndex: number
+) => {
+  return await Tablet.findAll({
+    limit,
+    offset: startIndex,
+  });
 };
 
 export const getTablet = async (id: string) => {
