@@ -4,8 +4,12 @@ import * as productController from '../controllers/productsController.js';
 import * as phonesController from '../controllers/phonesController.js';
 import * as tabletsController from '../controllers/tabletsController.js';
 import * as accessoriesController from '../controllers/accessoriesController.js';
+import * as homeController from '../controllers/homeController.js';
 
 const router = express.Router();
+
+router.get('/home/hotprice', homeController.getHotPrice);
+router.get('/home/newProducts', homeController.getNewestProducts);
 
 router.get('/products/:category', productController.getAllByCategory);
 router.get('/products/:id/recommended', productController.getRecomended);
