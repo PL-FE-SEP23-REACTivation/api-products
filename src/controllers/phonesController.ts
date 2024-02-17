@@ -15,7 +15,6 @@ export const getAll = async (req: Request, res: Response) => {
   } catch (e) {
     res.sendStatus(404);
   }
-
 };
 
 export const getPhoneById = async (req: Request, res: Response) => {

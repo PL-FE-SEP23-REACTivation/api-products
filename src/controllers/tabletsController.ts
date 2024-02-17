@@ -13,7 +13,6 @@ export const getAll = async (req: Request, res: Response) => {
   } catch (e) {
     res.sendStatus(404);
   }
-
 };
 
 export const getTabletById = async (req: Request, res: Response) => {
