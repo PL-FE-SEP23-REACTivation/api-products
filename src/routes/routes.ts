@@ -7,9 +7,11 @@ import * as accessoriesController from '../controllers/accessoriesController.js'
 
 const router = express.Router();
 
-router.get('/products', productController.getAll);
-router.get('/products/:id', productController.getOne);
+router.get('/products/discount', productController.getHotPrice);
+router.get('/products/new', productController.getNewestProducts);
+router.get('/products/:category', productController.getAllByCategory);
 router.get('/products/:id/recommended', productController.getRecomended);
+router.get('/products', productController.getAll);
 
 router.get('/phones/:id', phonesController.getPhoneById);
 router.get('/phones', phonesController.getAll);
