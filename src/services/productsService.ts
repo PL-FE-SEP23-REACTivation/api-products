@@ -21,7 +21,7 @@ export const getProductsByCategory = async (
   sortBy: string
 ) => {
   let order: OrderItem = ['year', 'DESC'];
-  switch(sortBy) {
+  switch (sortBy) {
   case 'oldest':
     order = ['year', 'ASC'];
     break;
@@ -38,7 +38,7 @@ export const getProductsByCategory = async (
     limit,
     offset: startIndex,
     where: { category },
-    order: [order]
+    order: [order],
   });
 };
 
