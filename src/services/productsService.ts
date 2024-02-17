@@ -1,11 +1,29 @@
-import Product from '../../models/product';
+import Product from '../../models/product.js';
 
 export const getAll = async () => {
   return await Product.findAll();
 };
 
-export const getProductById = async (id: string) => {
-  return await Product.findByPk(id);
+export const getAllWithPagination = async (
+  limit: number,
+  startIndex: number
+) => {
+  return await Product.findAll({
+    limit,
+    offset: startIndex,
+  });
+};
+
+export const getProductsByCategory = async (
+  category: string,
+  limit: number,
+  startIndex: number
+) => {
+  return await Product.findAll({
+    limit,
+    offset: startIndex,
+    where: { category },
+  });
 };
 
 export const getRecomendedProducts = async () => {
@@ -39,4 +57,37 @@ const generateRandomNumbersArray = (max: number) => {
   }
 
   return result;
+};
+
+import sequelize from 'sequelize';
+
+export const getProductsWithHotPrice = async () => {
+  return await Product.findAll({
+    attributes: [
+      'id',
+      'category',
+      'itemId',
+      'name',
+      'fullPrice',
+      'price',
+      'screen',
+      'capacity',
+      'color',
+      'ram',
+      'year',
+      'image',
+    ],
+    //   [sequelize.literal('(fullPrice - price)'), 'discount']],
+    // order: [[sequelize.literal('(fullPrice - price)'), 'DESC']]
+  });
+};
+
+export const getNewProducts = async () => {
+  return await Product.findAll({
+    where: {
+      year: {
+        [sequelize.Op.gte]: 2022,
+      },
+    },
+  });
 };

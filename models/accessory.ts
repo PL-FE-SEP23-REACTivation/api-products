@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 'use strict';
 import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../src/utils/db';
-import Product from './product';
+import { sequelize } from '../src/utils/db.js';
+import Product from './product.js';
 
 type Descriptions = {
   title: string;
