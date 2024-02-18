@@ -21,7 +21,10 @@ router.get('/tablets/quantity', tabletsController.getTabletsQuantity);
 router.get('/tablets/:id', tabletsController.getTabletById);
 router.get('/tablets', tabletsController.getAll);
 
-router.get('/accessories/quantity', accessoriesController.getAccessoriesQuantity);
+router.get(
+  '/accessories/quantity',
+  accessoriesController.getAccessoriesQuantity
+);
 router.get('/accessories/:id', accessoriesController.getAccessorieById);
 router.get('/accessories', accessoriesController.getAll);
 
