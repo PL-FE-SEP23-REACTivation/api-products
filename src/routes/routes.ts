@@ -13,12 +13,15 @@ router.get('/products/:category', productController.getAllByCategory);
 router.get('/products/:id/recommended', productController.getRecomended);
 router.get('/products', productController.getAll);
 
+router.get('/phones/quantity', phonesController.getPhonesQuantity);
 router.get('/phones/:id', phonesController.getPhoneById);
 router.get('/phones', phonesController.getAll);
 
+router.get('/tablets/quantity', tabletsController.getTabletsQuantity);
 router.get('/tablets/:id', tabletsController.getTabletById);
 router.get('/tablets', tabletsController.getAll);
 
+router.get('/accessories/quantity', accessoriesController.getAccessoriesQuantity);
 router.get('/accessories/:id', accessoriesController.getAccessorieById);
 router.get('/accessories', accessoriesController.getAll);
 
