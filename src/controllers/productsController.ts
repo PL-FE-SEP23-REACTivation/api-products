@@ -51,7 +51,8 @@ export const getRecomended = async (req: Request, res: Response) => {
 };
 
 export const getHotPrice = async (req: Request, res: Response) => {
-  const limit = parseInt(req.query.perPage as string) || 12;
+  const limit = parseInt(req.query.limit as string) || 12;
+
   try {
     const products = await service.getProductsWithHotPrice(limit);
 
