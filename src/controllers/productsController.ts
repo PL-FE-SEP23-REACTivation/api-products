@@ -32,7 +32,7 @@ export const getAllByCategory = async (req: Request, res: Response) => {
       limit,
       startIndex,
       sortBy,
-      search,
+      search
     );
     res.send(products);
   } catch (e) {

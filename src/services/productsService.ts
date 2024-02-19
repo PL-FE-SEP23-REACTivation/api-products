@@ -19,7 +19,7 @@ export const getProductsByCategory = async (
   limit: number,
   startIndex: number,
   sortBy: string,
-  search: string,
+  search: string
 ) => {
   let order: OrderItem = ['year', 'DESC'];
   switch (sortBy) {
