@@ -18,7 +18,8 @@ export const getProductsByCategory = async (
   category: string,
   limit: number,
   startIndex: number,
-  sortBy: string
+  sortBy: string,
+  search: string,
 ) => {
   let order: OrderItem = ['year', 'DESC'];
   switch (sortBy) {
@@ -37,7 +38,10 @@ export const getProductsByCategory = async (
   return await Product.findAll({
     limit,
     offset: startIndex,
-    where: { category },
+    where: {
+      category,
+      name: { [Op.like]: `%${search}%` },
+    },
     order: [order],
   });
 };
@@ -75,7 +79,7 @@ const generateRandomNumbersArray = (max: number) => {
   return result;
 };
 
-import sequelize, { OrderItem } from 'sequelize';
+import sequelize, { Op, OrderItem } from 'sequelize';
 
 export const getProductsWithHotPrice = async (limit: number) => {
   return await Product.findAll({

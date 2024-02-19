@@ -19,6 +19,7 @@ export const getAllByCategory = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.perPage as string) || 8;
   const sortBy = (req.query.sortBy as string) || 'newest';
+  const search = (req.query.search as string) || '';
   const { category } = req.params;
   const startIndex = (page - 1) * limit;
   if (category === undefined) {
@@ -30,7 +31,8 @@ export const getAllByCategory = async (req: Request, res: Response) => {
       category,
       limit,
       startIndex,
-      sortBy
+      sortBy,
+      search,
     );
     res.send(products);
   } catch (e) {
