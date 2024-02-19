@@ -78,7 +78,7 @@ export const getQuantityByCategory = async (req: Request, res: Response) => {
 
   try {
     const quantity = await service.getQuantity(category);
-    const result = {quantity};
+    const result = { quantity };
 
     res.send(result);
   } catch (e) {

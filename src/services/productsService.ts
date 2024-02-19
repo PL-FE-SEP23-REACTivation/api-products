@@ -113,7 +113,6 @@ export const getNewProducts = async () => {
 
 export const getQuantity = async (category: string) => {
   return await Product.count({
-    where: {category},
-  }
-  );
+    where: { category },
+  });
 };
