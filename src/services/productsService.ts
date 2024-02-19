@@ -1,4 +1,5 @@
 import Product from '../../models/product.js';
+import sequelize, { Op, OrderItem } from 'sequelize';
 
 export const getAll = async () => {
   return await Product.findAll();
@@ -18,7 +19,8 @@ export const getProductsByCategory = async (
   category: string,
   limit: number,
   startIndex: number,
-  sortBy: string
+  sortBy: string,
+  search: string
 ) => {
   let order: OrderItem = ['year', 'DESC'];
   switch (sortBy) {
@@ -37,7 +39,10 @@ export const getProductsByCategory = async (
   return await Product.findAll({
     limit,
     offset: startIndex,
-    where: { category },
+    where: {
+      category,
+      name: { [Op.like]: `%${search}%` },
+    },
     order: [order],
   });
 };
@@ -75,8 +80,6 @@ const generateRandomNumbersArray = (max: number) => {
   return result;
 };
 
-import sequelize, { OrderItem } from 'sequelize';
-
 export const getProductsWithHotPrice = async (limit: number) => {
   return await Product.findAll({
     attributes: [
@@ -106,5 +109,13 @@ export const getNewProducts = async () => {
         [sequelize.Op.gte]: 2022,
       },
     },
+    order: [['year', 'DESC'], 'id'],
+    limit: 12,
+  });
+};
+
+export const getQuantity = async (category: string) => {
+  return await Product.count({
+    where: { category },
   });
 };

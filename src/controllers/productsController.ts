@@ -19,6 +19,7 @@ export const getAllByCategory = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.perPage as string) || 8;
   const sortBy = (req.query.sortBy as string) || 'newest';
+  const search = (req.query.search as string) || '';
   const { category } = req.params;
   const startIndex = (page - 1) * limit;
   if (category === undefined) {
@@ -30,7 +31,8 @@ export const getAllByCategory = async (req: Request, res: Response) => {
       category,
       limit,
       startIndex,
-      sortBy
+      sortBy,
+      search
     );
     res.send(products);
   } catch (e) {
@@ -50,6 +52,7 @@ export const getRecomended = async (req: Request, res: Response) => {
 
 export const getHotPrice = async (req: Request, res: Response) => {
   const limit = parseInt(req.query.limit as string) || 12;
+
   try {
     const products = await service.getProductsWithHotPrice(limit);
 
@@ -64,6 +67,23 @@ export const getNewestProducts = async (req: Request, res: Response) => {
     const products = await service.getNewProducts();
 
     res.send(products);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};
+
+export const getQuantityByCategory = async (req: Request, res: Response) => {
+  const { category } = req.params;
+
+  if (!category) {
+    res.sendStatus(404);
+  }
+
+  try {
+    const quantity = await service.getQuantity(category);
+    const result = { quantity };
+
+    res.send(result);
   } catch (e) {
     res.sendStatus(404);
   }
