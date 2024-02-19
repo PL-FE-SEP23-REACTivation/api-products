@@ -13,7 +13,3 @@ export const getAllWithPagination = async (
 export const getAccessorie = async (id: string) => {
   return await Accessory.findByPk(id);
 };
-
-export const getQuantity = async () => {
-  return await Accessory.count();
-};

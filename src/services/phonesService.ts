@@ -7,7 +7,3 @@ export const getAll = async () => {
 export const getPhoneById = async (id: string) => {
   return await Phone.findByPk(id);
 };
-
-export const getQuantity = async () => {
-  return await Phone.count();
-};

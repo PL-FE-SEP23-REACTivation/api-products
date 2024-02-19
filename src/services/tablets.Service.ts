@@ -10,7 +10,3 @@ export const getAll = async (limit: number, startIndex: number) => {
 export const getTablet = async (id: string) => {
   return await Tablet.findByPk(id);
 };
-
-export const getQuantity = async () => {
-  return await Tablet.count();
-};

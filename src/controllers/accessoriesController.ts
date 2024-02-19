@@ -38,14 +38,3 @@ export const getAccessorieById = async (req: Request, res: Response) => {
     res.sendStatus(404);
   }
 };
-
-export const getAccessoriesQuantity = async (req: Request, res: Response) => {
-  try {
-    const quantity = await service.getQuantity();
-    console.log(quantity);
-
-    res.send(quantity);
-  } catch (e) {
-    res.sendStatus(404);
-  }
-};

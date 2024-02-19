@@ -38,14 +38,3 @@ export const getTabletById = async (req: Request, res: Response) => {
     res.sendStatus(404);
   }
 };
-
-export const getTabletsQuantity = async (req: Request, res: Response) => {
-  try {
-    const quantity = await service.getQuantity();
-    console.log(quantity);
-
-    res.send(quantity);
-  } catch (e) {
-    res.sendStatus(404);
-  }
-};

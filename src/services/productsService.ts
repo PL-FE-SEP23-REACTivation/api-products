@@ -77,7 +77,7 @@ const generateRandomNumbersArray = (max: number) => {
 
 import sequelize, { OrderItem } from 'sequelize';
 
-export const getProductsWithHotPrice = async () => {
+export const getProductsWithHotPrice = async (limit: number) => {
   return await Product.findAll({
     attributes: [
       'id',
@@ -92,9 +92,10 @@ export const getProductsWithHotPrice = async () => {
       'ram',
       'year',
       'image',
+      [sequelize.literal('("fullPrice" - price)'), 'discount'],
     ],
-    //   [sequelize.literal('(fullPrice - price)'), 'discount']],
-    // order: [[sequelize.literal('(fullPrice - price)'), 'DESC']]
+    order: [['discount', 'DESC'], 'id'],
+    limit,
   });
 };
 
@@ -105,5 +106,14 @@ export const getNewProducts = async () => {
         [sequelize.Op.gte]: 2022,
       },
     },
+    order: [['year', 'DESC'], 'id'],
+    limit: 12,
   });
+};
+
+export const getQuantity = async (category: string) => {
+  return await Product.count({
+    where: {category},
+  }
+  );
 };

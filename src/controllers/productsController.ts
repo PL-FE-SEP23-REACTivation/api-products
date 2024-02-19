@@ -49,8 +49,9 @@ export const getRecomended = async (req: Request, res: Response) => {
 };
 
 export const getHotPrice = async (req: Request, res: Response) => {
+  const limit = parseInt(req.query.perPage as string) || 12;
   try {
-    const products = await service.getProductsWithHotPrice();
+    const products = await service.getProductsWithHotPrice(limit);
 
     res.send(products);
   } catch (e) {
@@ -63,6 +64,23 @@ export const getNewestProducts = async (req: Request, res: Response) => {
     const products = await service.getNewProducts();
 
     res.send(products);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};
+
+export const getQuantityByCategory = async (req: Request, res: Response) => {
+  const { category } = req.params;
+
+  if (!category) {
+    res.sendStatus(404);
+  }
+
+  try {
+    const quantity = await service.getQuantity(category);
+    const result = {quantity};
+
+    res.send(result);
   } catch (e) {
     res.sendStatus(404);
   }
