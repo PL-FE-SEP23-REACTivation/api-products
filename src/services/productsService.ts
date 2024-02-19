@@ -1,4 +1,5 @@
 import Product from '../../models/product.js';
+import sequelize, { Op, OrderItem } from 'sequelize';
 
 export const getAll = async () => {
   return await Product.findAll();
@@ -78,8 +79,6 @@ const generateRandomNumbersArray = (max: number) => {
 
   return result;
 };
-
-import sequelize, { Op, OrderItem } from 'sequelize';
 
 export const getProductsWithHotPrice = async (limit: number) => {
   return await Product.findAll({
