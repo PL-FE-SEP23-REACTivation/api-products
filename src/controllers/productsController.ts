@@ -49,8 +49,9 @@ export const getRecomended = async (req: Request, res: Response) => {
 };
 
 export const getHotPrice = async (req: Request, res: Response) => {
+  const limit = parseInt(req.query.limit as string) || 12;
   try {
-    const products = await service.getProductsWithHotPrice();
+    const products = await service.getProductsWithHotPrice(limit);
 
     res.send(products);
   } catch (e) {
