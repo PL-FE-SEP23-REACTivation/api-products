@@ -15,15 +15,20 @@ router.get(
 );
 router.get('/products/:category', productController.getAllByCategory);
 router.get('/products/:id/recommended', productController.getRecomended);
-router.get('/products', productController.getAll);
+router.get('/products', productController.getAll); //not using?
 
 router.get('/phones/:id', phonesController.getPhoneById);
-router.get('/phones', phonesController.getAll);
+router.get('/phones', phonesController.getAll); //not using?
 
 router.get('/tablets/:id', tabletsController.getTabletById);
-router.get('/tablets', tabletsController.getAll);
+router.get('/tablets', tabletsController.getAll); //not using?
 
 router.get('/accessories/:id', accessoriesController.getAccessorieById);
-router.get('/accessories', accessoriesController.getAll);
+router.get('/accessories', accessoriesController.getAll); //not using?
+
+//test route
+router.get('/test/quantity', productController.testQuantity); // /products/quantity
+//result: [{"category":"accessories","count":34},{"category":"phones","count":124},{"category":"tablets","count":36}]
 
 export default router;
+

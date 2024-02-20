@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import * as service from '../services/tablets.Service.js';
 
+//not using?
 export const getAll = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.perPage as string) || 8;

@@ -1,5 +1,6 @@
 import Tablet from '../../models/tablet.js';
 
+//not using?
 export const getAll = async (limit: number, startIndex: number) => {
   return await Tablet.findAll({
     limit,

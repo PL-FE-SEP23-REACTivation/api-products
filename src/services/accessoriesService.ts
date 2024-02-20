@@ -10,6 +10,7 @@ export const getAllWithPagination = async (
   });
 };
 
+//not using?
 export const getAccessorie = async (id: string) => {
   return await Accessory.findByPk(id);
 };
