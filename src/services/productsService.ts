@@ -41,7 +41,7 @@ export const getProductsByCategory = async (
     offset: startIndex,
     where: {
       category,
-      name: { [Op.like]: `%${search}%` },
+      name: { [Op.iLike]: `%${search}%` },
     },
     order: [order],
   });
