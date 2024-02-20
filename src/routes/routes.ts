@@ -31,4 +31,3 @@ router.get('/test/quantity', productController.testQuantity); // /products/quant
 //result: [{"category":"accessories","count":34},{"category":"phones","count":124},{"category":"tablets","count":36}]
 
 export default router;
-
