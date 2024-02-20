@@ -41,7 +41,7 @@ export const getProductsByCategory = async (
     offset: startIndex,
     where: {
       category,
-      name: { [Op.like]: `%${search}%` },
+      name: { [Op.iLike]: `%${search}%` },
     },
     order: [order],
   });
@@ -114,8 +114,11 @@ export const getNewProducts = async () => {
   });
 };
 
-export const getQuantity = async (category: string) => {
+export const getQuantity = async (category: string, search: string) => {
   return await Product.count({
-    where: { category },
+    where: {
+      category,
+      name: { [Op.iLike]: `%${search}%` },
+    },
   });
 };
