@@ -43,7 +43,7 @@ export const getProductsByCategory = async (
       category,
       name: { [Op.iLike]: `%${search}%` },
     },
-    order: [order],
+    order: [order, ['id', 'ASC']],
   });
 };
 
