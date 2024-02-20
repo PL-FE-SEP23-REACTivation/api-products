@@ -114,8 +114,11 @@ export const getNewProducts = async () => {
   });
 };
 
-export const getQuantity = async (category: string) => {
+export const getQuantity = async (category: string, search: string) => {
   return await Product.count({
-    where: { category },
+    where: {
+      category,
+      name: { [Op.iLike]: `%${search}%` },
+    },
   });
 };
