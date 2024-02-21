@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import * as service from '../services/productsService.js';
 
-//not using?
 export const getAll = async (req: Request, res: Response) => {
   const page = parseInt(req.query.page as string) || 1;
   const limit = parseInt(req.query.perPage as string) || 8;
@@ -92,8 +91,7 @@ export const getQuantityByCategory = async (req: Request, res: Response) => {
   }
 };
 
-//test
-export const testQuantity = async (req: Request, res: Response) => {
+export const getAllQuantity = async (req: Request, res: Response) => {
   try {
     const result = await service.getAllQuantity();
     console.log(result);

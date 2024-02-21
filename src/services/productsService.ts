@@ -5,7 +5,6 @@ export const getAll = async () => {
   return await Product.findAll();
 };
 
-//not using?
 export const getAllWithPagination = async (
   limit: number,
   startIndex: number
@@ -124,7 +123,6 @@ export const getQuantity = async (category: string, search: string) => {
   });
 };
 
-//test
 export const getAllQuantity = async () => {
   return await Product.count({
     group: ['category'],
