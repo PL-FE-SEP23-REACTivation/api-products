@@ -91,6 +91,17 @@ export const getQuantityByCategory = async (req: Request, res: Response) => {
   }
 };
 
+export const getAllQuantity = async (req: Request, res: Response) => {
+  try {
+    const result = await service.getAllQuantity();
+    console.log(result);
+
+    res.send(result);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};
+
 export const getItemById = async (req: Request, res: Response) => {
   const { itemId } = req.params;
 

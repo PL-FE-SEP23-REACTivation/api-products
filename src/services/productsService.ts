@@ -49,7 +49,7 @@ export const getProductsByCategory = async (
       category,
       name: { [Op.iLike]: `%${search}%` },
     },
-    order: [order],
+    order: [order, ['id', 'ASC']],
   });
 };
 
@@ -126,5 +126,11 @@ export const getQuantity = async (category: string, search: string) => {
       category,
       name: { [Op.iLike]: `%${search}%` },
     },
+  });
+};
+
+export const getAllQuantity = async () => {
+  return await Product.count({
+    group: ['category'],
   });
 };
