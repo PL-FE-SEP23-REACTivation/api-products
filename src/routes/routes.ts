@@ -13,6 +13,8 @@ router.get(
   '/products/:category/quantity',
   productController.getQuantityByCategory
 );
+router.get('/products/item/:itemId', productController.getItemById);
+router.get('/products/quantity', productController.getAllQuantity);
 router.get('/products/:category', productController.getAllByCategory);
 router.get('/products/:id/recommended', productController.getRecomended);
 router.get('/products', productController.getAll);

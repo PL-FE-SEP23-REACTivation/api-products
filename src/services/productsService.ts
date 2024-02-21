@@ -5,6 +5,12 @@ export const getAll = async () => {
   return await Product.findAll();
 };
 
+export const getProbuctByItemId = async (itemId: string) => {
+  return await Product.findAll({
+    where: { itemId },
+  });
+};
+
 export const getAllWithPagination = async (
   limit: number,
   startIndex: number
@@ -41,9 +47,9 @@ export const getProductsByCategory = async (
     offset: startIndex,
     where: {
       category,
-      name: { [Op.like]: `%${search}%` },
+      name: { [Op.iLike]: `%${search}%` },
     },
-    order: [order],
+    order: [order, ['id', 'ASC']],
   });
 };
 
@@ -114,8 +120,17 @@ export const getNewProducts = async () => {
   });
 };
 
-export const getQuantity = async (category: string) => {
+export const getQuantity = async (category: string, search: string) => {
   return await Product.count({
-    where: { category },
+    where: {
+      category,
+      name: { [Op.iLike]: `%${search}%` },
+    },
+  });
+};
+
+export const getAllQuantity = async () => {
+  return await Product.count({
+    group: ['category'],
   });
 };
