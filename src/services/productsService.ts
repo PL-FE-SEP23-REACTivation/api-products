@@ -5,6 +5,12 @@ export const getAll = async () => {
   return await Product.findAll();
 };
 
+export const getProbuctByItemId = async (itemId: string) => {
+  return await Product.findAll({
+    where: { itemId },
+  });
+};
+
 export const getAllWithPagination = async (
   limit: number,
   startIndex: number
