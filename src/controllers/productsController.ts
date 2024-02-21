@@ -99,9 +99,7 @@ export const getItemById = async (req: Request, res: Response) => {
     return;
   }
   try {
-    const products = await service.getProbuctByItemId(
-      itemId,
-    );
+    const products = await service.getProbuctByItemId(itemId);
     res.send(products);
   } catch (e) {
     res.sendStatus(404);

@@ -7,7 +7,7 @@ export const getAll = async () => {
 
 export const getProbuctByItemId = async (itemId: string) => {
   return await Product.findAll({
-    where: {itemId},
+    where: { itemId },
   });
 };
 
