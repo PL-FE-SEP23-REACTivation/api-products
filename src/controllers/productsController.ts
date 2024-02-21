@@ -90,3 +90,20 @@ export const getQuantityByCategory = async (req: Request, res: Response) => {
     res.sendStatus(404);
   }
 };
+
+export const getItemById = async (req: Request, res: Response) => {
+  const { itemId } = req.params;
+
+  if (itemId === undefined) {
+    res.sendStatus(404);
+    return;
+  }
+  try {
+    const products = await service.getProbuctByItemId(
+      itemId,
+    );
+    res.send(products);
+  } catch (e) {
+    res.sendStatus(404);
+  }
+};
