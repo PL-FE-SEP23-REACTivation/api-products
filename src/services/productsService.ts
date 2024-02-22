@@ -123,14 +123,9 @@ export const getNewProducts = async () => {
 export const getQuantity = async (category: string, search: string) => {
   return await Product.count({
     where: {
-      category,
+      category: { [Op.iLike]: `%${category}%` },
       name: { [Op.iLike]: `%${search}%` },
     },
-  });
-};
-
-export const getAllQuantity = async () => {
-  return await Product.count({
     group: ['category'],
   });
 };
