@@ -73,30 +73,14 @@ export const getNewestProducts = async (req: Request, res: Response) => {
 };
 
 export const getQuantityByCategory = async (req: Request, res: Response) => {
-  const { category } = req.params;
+  const category = (req.query.category as string) || '';
   const search = (req.query.search as string) || '';
   console.log(search);
 
-  if (!category) {
-    res.sendStatus(404);
-  }
-
   try {
     const quantity = await service.getQuantity(category, search);
-    const result = { quantity };
 
-    res.send(result);
-  } catch (e) {
-    res.sendStatus(404);
-  }
-};
-
-export const getAllQuantity = async (req: Request, res: Response) => {
-  try {
-    const result = await service.getAllQuantity();
-    console.log(result);
-
-    res.send(result);
+    res.send(quantity);
   } catch (e) {
     res.sendStatus(404);
   }
