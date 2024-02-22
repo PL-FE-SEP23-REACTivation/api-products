@@ -75,7 +75,6 @@ export const getNewestProducts = async (req: Request, res: Response) => {
 export const getQuantityByCategory = async (req: Request, res: Response) => {
   const category = (req.query.category as string) || '';
   const search = (req.query.search as string) || '';
-  console.log(search);
 
   try {
     const quantity = await service.getQuantity(category, search);
